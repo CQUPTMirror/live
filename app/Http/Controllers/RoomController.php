@@ -58,7 +58,6 @@ class RoomController extends Controller {
 
     public function destroy($roomId){
         if(Room::where('id', '=', $roomId)->where('status', '=', 2)->where('user_id', '=', Auth::id())->update([
-            'living_token' => '',
             'status' => 1
         ])){
             return ['status' => 200, 'info' => '成功'];
@@ -72,6 +71,24 @@ class RoomController extends Controller {
         if ($room){
             $room->user;
             if($room['living_token'] == $request['token'] && $room['user_id'] == $request['user_id']) {
+                if (time() - strtotime($room['update'] < 1800)){
+                    Room::where('id', '=', $request['room_id'])->update(['status'=>2]);
+                } else {
+                    return abort(403);
+                }
+                return ['status' => 200];
+            }
+        }
+        return abort(403);
+    }
+
+    //串流结束更改状态
+    public function publishDone(Request $request){
+        $room = Room::find($request['room_id']);
+        if ($room){
+            $room->user;
+            if($room['living_token'] == $request['token'] && $room['user_id'] == $request['user_id']) {
+                Room::where('id', '=', $request['room_id'])->update(['status'=>1]);
                 return ['status' => 200];
             }
         }

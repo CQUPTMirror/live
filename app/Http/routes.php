@@ -30,6 +30,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', ['as' => 'login', 'uses' => 'UsersController@index']);
     Route::post('/login', ['as' => 'login', 'uses' => 'UsersController@login']);
     Route::get('/publish', 'RoomController@publish');
+    Route::get('/publishdone', 'RoomController@publishDone');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
