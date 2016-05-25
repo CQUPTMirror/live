@@ -71,7 +71,7 @@ class RoomController extends Controller {
         $room = Room::find($request['room_id']);
         if ($room){
             $room->user;
-            if($room['token'] == $request['token'] && $room['user_id'] == $request['user_id']) {
+            if($room['living_token'] == $request['token'] && $room['user_id'] == $request['user_id']) {
                 return ['status' => 200];
             }
         }
