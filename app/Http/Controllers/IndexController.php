@@ -16,8 +16,9 @@ class IndexController extends Controller {
             $room->user;
         }
         $hotRoom = Room::getHotRoom();
-        $hotRoom->user;
-
+        if ($hotRoom) {
+            $hotRoom->user;
+        }
         return view('FrontEnd.index')->with('roomList', $roomList)->with('hotRoom', $hotRoom);
     }
     

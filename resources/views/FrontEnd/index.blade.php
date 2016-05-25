@@ -7,6 +7,7 @@
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
     </div>
+    @if($hotRoom['id'])
     <div class="row text-center">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -25,9 +26,11 @@
         </div>
         <div class="col-md-2"></div>
     </div>
+    @else
     <div class="row text-center">
-        <div class="col-md-12"></div>
+        <div class="col-md-12">没有直播</div>
     </div>
+    @endif
     <div class="row">
         <div class="col-md-3"><h3>房间列表</h3></div>
         <div class="col-md-3"></div>

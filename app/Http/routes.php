@@ -25,10 +25,8 @@
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'IndexController@index']);
-    Route::resource('/room',
-        'RoomController',
-        ['only' => ['index', 'show']]
-    );
+    Route::get('room', ['as'=>'room.index', 'uses' => 'RoomController@index']);
+    Route::get('room/{roomId}', ['as'=>'room.show', 'uses' => 'RoomController@show']);
     Route::get('/login', ['as' => 'login', 'uses' => 'UsersController@index']);
     Route::post('/login', ['as' => 'login', 'uses' => 'UsersController@login']);
     Route::get('/publish', 'RoomController@publish');
@@ -36,8 +34,6 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('upspace', ['as' => 'upspace', 'uses' => 'UsersController@space']);
-    Route::resource('/room',
-        'RoomController',
-        ['only' => ['update', 'destroy']]
-    );
+    Route::post('/roomupdate/{roomId}', ['as'=>'room.update', 'uses' => 'RoomController@update']);
+    Route::post('/roomdestroy/{roomId}', ['as'=>'room.destroy', 'uses' => 'RoomController@destroy']);
 });

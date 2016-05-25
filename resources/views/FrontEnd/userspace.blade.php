@@ -15,8 +15,8 @@
         @if($room_status != 2)
             $("button").on('click', function () {
                 $.ajax({
-                    type: "PUT",
-                    url: "{{route('room.update', ['id' => $room_id])}}",
+                    type: "post",
+                    url: "{{route('room.update', ['roomId' => $room_id])}}",
                     data: {'user_id': "{{Auth::id()}}", '_token':"{{csrf_token()}}"},
                     dataType: "json",
                     success: function(data){
@@ -31,8 +31,8 @@
         @else
             $("button").on('click', function () {
             $.ajax({
-                type: "DELETE",
-                url: "{{route('room.destroy', ['id' => $room_id])}}",
+                type: "post",
+                url: "{{route('room.destroy', ['roomId' => $room_id])}}",
                 data: {'user_id': "{{Auth::id()}}", '_token':"{{csrf_token()}}"},
                 dataType: "json",
                 success: function(data){
