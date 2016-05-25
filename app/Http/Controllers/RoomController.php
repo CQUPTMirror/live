@@ -71,7 +71,7 @@ class RoomController extends Controller {
         if ($room){
             $room->user;
             if($room['living_token'] == $request['token'] && $room['user_id'] == $request['user_id']) {
-                if (time() - strtotime($room['update'] < 1800)){
+                if (time() - strtotime($room['updated_at']) < 1800){
                     Room::where('id', '=', $request['room_id'])->update(['status'=>2]);
                 } else {
                     return abort(403);
