@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
-
+Route::get('/', ['as' => 'index', 'uses' => 'IndexController@index']);
+Route::resource('/room',
+   'RoomController',
+    ['only' => ['index', 'show']]
+);
 /*
 |--------------------------------------------------------------------------
 | Application Routes
