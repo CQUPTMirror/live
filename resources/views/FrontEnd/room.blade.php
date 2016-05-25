@@ -15,13 +15,19 @@
             <h1>{{$room['user']['nickname'].'的直播间'}}</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 text-center center-block">
-            <video id="live-video" width="1280" height="720" class="video-js vjs-default-skin center-block" controls>
-                <source src="/live/live_room_id_{{$room['id']}}.m3u8" type="application/x-mpegURL">
-            </video>
+    @if($room['status'] == 2)
+        <div class="row">
+            <div class="col-md-12 text-center center-block">
+                <video id="live-video" width="1280" height="720" class="video-js vjs-default-skin center-block" controls>
+                    <source src="/live/live_room_id_{{$room['id']}}.m3u8" type="application/x-mpegURL">
+                </video>
+            </div>
         </div>
-    </div>
+    @elseif($room['status'] == 0)
+        主播被封了
+    @else
+        主播撩妹去了
+    @endif
     <div class="row">
         <div class="col-md-12">
             我是评论区

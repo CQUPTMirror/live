@@ -27,6 +27,6 @@ class Room extends Model {
     }
 
     public function user(){
-        return $this->hasOne('App\Model\User', 'id', 'user_id');
+        return $this->hasOne('App\User', 'id', 'user_id');
     }
 }
