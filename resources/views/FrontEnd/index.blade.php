@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <a href="{{route('room.show', ['id'=>$room['id']])}}">
-                                <img src="{{asset('uploads/'.$room['room_cover'])}}" class="img-responsive img-rounded" alt="">
+                                <img src="{{asset('images/live_room/live_room_id_'.$room['id'].'.jpg')}}" class="img-responsive img-rounded" alt="">
                             </a>
                         </div>
                     </div>
