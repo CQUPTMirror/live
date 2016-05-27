@@ -15,7 +15,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8 center-block">
                     <a href="{{route('room.show', ['id'=>$hotRoom['id']])}}">
-                        <img src="{{asset('uploads/'.$hotRoom['room_cover'])}}" class="img-responsive img-rounded" alt="">
+                        <img src="{{asset('images/live_room/live_room_id_'.$hotRoom['id'].'.jpg')}}" class="img-responsive img-rounded" alt="">
                     </a>
                 </div>
                 <div class="col-md-2"></div>
