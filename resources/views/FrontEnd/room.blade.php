@@ -19,7 +19,6 @@
         <div class="row">
             <div class="col-md-12 text-center center-block">
                 <video id="live-video" width="1280" height="720" class="video-js vjs-default-skin center-block" controls>
-                    <source src="rtmp://172.22.161.91/live/live_room_id_{{$room['id']}}" type="rtmp/flv">
                 </video>
             </div>
         </div>
@@ -34,6 +33,15 @@
         </div>
     </div>
     <script>
+        rtmp = '<source src="rtmp://172.22.161.91/live/live_room_id_{{$room['id']}}" type="rtmp/flv">';
+        hls = '<source src="http://172.22.161.91/live/live_room_id_{{$room['id']}}.m3u8" type="application/x-mpegURL">'
+        if(navigator.userAgent.indexOf('Mobile') > 0){
+            $('#live-video').append(hls);
+            console.log('hls');
+        } else {
+            $('#live-video').append(rtmp);
+            console.log('rtmp');
+        }
         var player = videojs('live-video');
         player.play();
     </script>

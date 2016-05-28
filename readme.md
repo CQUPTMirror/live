@@ -6,7 +6,7 @@
 
 
 ```ini
-# xample
+# Example
 # rtmp串流, rtmp播放(延迟低, 2~3s)
 rtmp {
         server {
@@ -46,14 +46,14 @@ rtmp {
 
 
 http{
-location /live {
-                types {
-                    application/vnd.apple.mpegurl m3u8;
-                    video/mp2t ts;
-                }
-                root /tmp;
-                add_header Cache-Control no-cache;
-                add_header Access-Control-Allow-Origin *;
+        location /live {
+                        types {
+                            application/vnd.apple.mpegurl m3u8;
+                            video/mp2t ts;
+                        }
+                        root /tmp;
+                        add_header Cache-Control no-cache;
+                        add_header Access-Control-Allow-Origin *;
         }
 }
 
