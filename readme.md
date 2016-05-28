@@ -4,8 +4,8 @@
 
 
 ```ini
-# example
-# rtmp流播放及推送配置
+# xample
+# rtmp串流, rtmp播放(延迟低, 2~3s)
 rtmp {
         server {
             listen 1935;
@@ -21,7 +21,7 @@ rtmp {
         }
 }
 
-# rmtp串流, 并支持hls播放切片配置
+# rmtp串流, 并支持hls播放切片配置(18s+延迟)
 rtmp {
         server {
             listen 1935;
