@@ -23,7 +23,7 @@ rtmp {
         }
 }
 
-# rmtp串流, 并支持hls播放切片配置(18s+延迟)
+# rmtp串流, 并支持rtmp播放同时支持hls播放切片配置(18s+延迟)
 rtmp {
         server {
             listen 1935;
@@ -58,3 +58,4 @@ http{
 }
 
 ```
+
