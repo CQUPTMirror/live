@@ -2,6 +2,8 @@
 
 ## nginx + rtmp + hls + ffmpeg + PHP
 
+- laravel, 使用前`composer install`
+
 
 ```ini
 # xample
