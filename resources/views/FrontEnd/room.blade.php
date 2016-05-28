@@ -12,7 +12,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>{{$room['user']['nickname'].'的直播间'}}</h1>
+            <h1>{{$room['room_name']}}</h1>
         </div>
     </div>
     @if($room['status'] == 2)

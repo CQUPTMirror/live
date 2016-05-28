@@ -29,7 +29,7 @@ class UsersController extends Controller {
         $room = Room::where('user_id', '=', Auth::id())->first();
         $room_id = $room['id'];
         $room_status = $room['status'];
-        return view('FrontEnd.userspace')->with('room_id', $room_id)->with('room_status', $room_status);
+        return view('FrontEnd.userspace')->with('room_id', $room_id)->with('room_status', $room_status)->with('room', $room);
     }
 
 

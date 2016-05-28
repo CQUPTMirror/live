@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('title', '用户空间')
 @section('content')
+    @if($room_id)
     <div class="row">
         <div class="col-md-12 text-center">
             <button type="button" class="btn btn-success">{{$room_status == 2 ? '关闭直播':'获取直播码'}}</button>
@@ -8,7 +9,9 @@
     </div>
     <div class="row">
         <div class="col-md-12 code text-center">
-
+            @if($room_status == 2)
+                {{'直播地址: rtmp://172.22.161.91/live <br>直播码: live_room_id_'.$room_id.'?room_id='.$room_id.'&user_id='.Auth::id().'&token='.$room['living_token']}}
+            @endif
         </div>
     </div>
     <script>
@@ -42,4 +45,26 @@
         })
         @endif
     </script>
+    @else
+        <div class="row">
+            <form action="{{route('room.a')}}">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-success">申请直播间</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            $("button").on('click', function () {
+                $.ajax({
+                    type: "post",
+                    url: "{{route('room.apply')}}",
+                    data: {'user_id': "{{Auth::id()}}", '_token':"{{csrf_token()}}"},
+                    dataType: "json",
+                    success: function(data){
+                        alert(data.info);
+                    }
+                })
+            })
+        </script>
+    @endif
 @endsection

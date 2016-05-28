@@ -26,6 +26,26 @@ class RoomController extends Controller {
         return abort(404);
     }
 
+    //申请直播间
+    public function apply(){
+        $room = Room::where('user_id', '=', Auth::id())->first();
+        if ($room) {
+
+            return [
+                'status' => 403,
+                'info'   => '你已申请直播间'
+            ];
+        }
+        $data = [
+            'user_id' => Auth::id()
+        ];
+        Room::create($data);
+        return [
+            'status' => 200,
+            'info'   => '申请成功, 待审核'
+        ];
+    }
+
     //获取直播码
     public function update($roomId){
         $room = Room::where('id', '=', $roomId)->where('user_id', '=', Auth::id())->first();
@@ -56,6 +76,7 @@ class RoomController extends Controller {
         ];
     }
 
+    //关闭直播间
     public function destroy($roomId){
         if(Room::where('id', '=', $roomId)->where('status', '=', 2)->where('user_id', '=', Auth::id())->update([
             'status' => 1
@@ -70,7 +91,7 @@ class RoomController extends Controller {
         $room = Room::find($request['room_id']);
         if ($room){
             $room->user;
-            if($room['living_token'] == $request['token'] && $room['user_id'] == $request['user_id']) {
+            if($room['living_token'] == $request['token'] && $room['user_id'] == $request['user_id'] && $room['status'] == 1) {
                 if (time() - strtotime($room['updated_at']) < 1800){
                     Room::where('id', '=', $request['room_id'])->update(['status'=>2]);
                 } else {

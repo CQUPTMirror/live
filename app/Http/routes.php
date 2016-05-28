@@ -34,7 +34,8 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
-    Route::get('upspace', ['as' => 'upspace', 'uses' => 'UsersController@space']);
+    Route::get('userspace', ['as' => 'upspace', 'uses' => 'UsersController@space']);
     Route::post('/roomupdate/{roomId}', ['as'=>'room.update', 'uses' => 'RoomController@update']);
     Route::post('/roomdestroy/{roomId}', ['as'=>'room.destroy', 'uses' => 'RoomController@destroy']);
+    Route::post('/roomapply', ['as' => 'room.apply', 'uses' => 'RoomController@apply']);
 });
