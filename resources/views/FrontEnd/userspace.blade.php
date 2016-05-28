@@ -47,11 +47,9 @@
     </script>
     @else
         <div class="row">
-            <form action="{{route('room.a')}}">
-                <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-success">申请直播间</button>
-                </div>
-            </form>
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-success">申请直播间</button>
+            </div>
         </div>
         <script>
             $("button").on('click', function () {
